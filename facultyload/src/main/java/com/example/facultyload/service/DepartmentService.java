@@ -1,31 +1,14 @@
 package com.example.facultyload.service;
 
-import com.example.facultyload.entity.Department;
-import com.example.facultyload.repository.DepartmentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.example.facultyload.dto.department.DepartmentCreateRequest;
+import com.example.facultyload.dto.department.DepartmentResponse;
 
 import java.util.List;
 
-@Service
-public class DepartmentService {
-
-    @Autowired
-    private DepartmentRepository departmentRepository;
-
-    public List<Department> getAllDepartments() {
-        return departmentRepository.findAll();
-    }
-
-    public Department getDepartmentById(Integer id) {
-        return departmentRepository.findById(id).orElse(null);
-    }
-
-    public Department saveDepartment(Department department) {
-        return departmentRepository.save(department);
-    }
-
-    public void deleteDepartment(Integer id) {
-        departmentRepository.deleteById(id);
-    }
+public interface DepartmentService {
+    DepartmentResponse create(DepartmentCreateRequest request);
+    DepartmentResponse update(Long id, DepartmentCreateRequest request);
+    DepartmentResponse get(Long id);
+    List<DepartmentResponse> list();
 }
+

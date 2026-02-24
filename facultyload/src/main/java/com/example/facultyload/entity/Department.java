@@ -1,21 +1,60 @@
 package com.example.facultyload.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDate;
+import java.time.Instant;
 
 @Entity
-@Table(name = "department")
+@Table(
+        name = "departments",
+        indexes = {
+                @Index(name = "idx_departments_code", columnList = "code")
+        }
+)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer departmentId;
+    private Long id;
 
-    private String departmentName;
+    @Column(nullable = false, unique = true)
+    private String name;
 
-    // ---- GETTERS & SETTERS ----
-    public Integer getDepartmentId() { return departmentId; }
-    public void setDepartmentId(Integer departmentId) { this.departmentId = departmentId; }
+    @Column(unique = true)
+    private String code;
 
-    public String getDepartmentName() { return departmentName; }
-    public void setDepartmentName(String departmentName) { this.departmentName = departmentName; }
+    @OneToOne
+    @JoinColumn(name = "hod_id")
+    private Faculty hod;
+
+    @OneToOne
+    @JoinColumn(name = "temp_hod_id")
+    private Faculty tempHod;
+
+    @Column(name = "temp_hod_end_date")
+    private LocalDate tempHodEndDate;
+
+    @Column(name = "created_at", updatable = false)
+    private Instant createdAt;
+
+    @Column(name = "updated_at")
+    private Instant updatedAt;
+
+    @PrePersist
+    void onCreate() {
+        createdAt = Instant.now();
+        updatedAt = Instant.now();
+    }
+
+    @PreUpdate
+    void onUpdate() {
+        updatedAt = Instant.now();
+    }
 }

@@ -1,9 +1,12 @@
 package com.example.facultyload.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.facultyload.entity.Department;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DepartmentRepository extends JpaRepository<Department, Integer> {
-    // Custom query example:
-    // List<Department> findByDepartmentName(String name);
+import java.util.Optional;
+
+public interface DepartmentRepository extends JpaRepository<Department, Long> {
+    Optional<Department> findByCodeIgnoreCase(String code);
+    boolean existsByNameIgnoreCase(String name);
 }
+
