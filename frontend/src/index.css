@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: radial-gradient(circle at top left, #f4f7fe, #e2e8f0 100%);
+  background-attachment: fixed;
+}
+
+/* Stunning headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', 'Inter', sans-serif !important;
+}
+
+/* Stunning Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 52, 96, 0.05);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 52, 96, 0.2);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(233, 69, 96, 0.6);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Global Transitions */
+a,
+button,
+.MuiCard-root,
+.MuiTableRow-root {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Professional Glassmorphism Classes */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 20px 0 rgba(15, 52, 96, 0.08);
+}
+
+.glass-dark {
+  /* Used for dark headers or specific accents if needed */
+  background: rgba(15, 52, 96, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+}
+
+/* Elegant Professional Animated Gradient Background */
+.gradient-bg {
+  background: linear-gradient(135deg, #f0f4f8, #e2e8f0, #eef2f6, #f8fafc);
+  background-size: 400% 400%;
+  animation: bgPulse 20s ease infinite;
+}
+
+@keyframes bgPulse {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Micro animations for hovering rows */
+.MuiTableRow-root:hover {
+  transform: scale(1.002) translateX(4px);
+  box-shadow: -4px 0 0 #e94560, 0 4px 15px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  position: relative;
+}
+
+/* Elevated table container */
+.MuiTableContainer-root {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+/* Add subtle entry animation to cards and tables */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.MuiPaper-root,
+.MuiCard-root {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', 'Inter', sans-serif !important;
+}
