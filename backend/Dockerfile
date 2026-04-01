@@ -10,4 +10,5 @@ RUN ./mvnw clean package -DskipTests
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/*.jar"]
+# Using the exact JAR name for a stable deployment
+CMD ["java", "-jar", "target/faculty-load-analyzer-1.0.0.jar"]

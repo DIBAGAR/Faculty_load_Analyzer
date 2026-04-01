@@ -42,6 +42,7 @@ com\abc\facultyload\dto\response\AuthResponse.class
 com\abc\facultyload\service\LeaveService.class
 com\abc\facultyload\controller\NotificationController.class
 com\abc\facultyload\service\AttendanceService$FacultyAttendanceStat.class
+com\abc\facultyload\exception\GlobalExceptionHandler.class
 com\abc\facultyload\service\NotificationService.class
 com\abc\facultyload\entity\Admin$AdminBuilderImpl.class
 com\abc\facultyload\service\AttendanceService$DailyAttendanceStat.class
