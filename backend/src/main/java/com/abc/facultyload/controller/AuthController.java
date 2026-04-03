@@ -34,9 +34,5 @@ public class AuthController {
         passwordResetService.resetPassword(body.get("token"), body.get("newPassword"));
         return ResponseEntity.ok(Map.of("message", "Password reset successful. You can now log in."));
     }
-
-    @GetMapping("/debug-users")
-    public ResponseEntity<java.util.List<com.abc.facultyload.entity.User>> debugUsers() {
-        return ResponseEntity.ok(authService.getAllUsersDebug());
-    }
 }
+

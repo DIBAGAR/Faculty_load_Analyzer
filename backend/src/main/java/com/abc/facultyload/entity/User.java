@@ -1,5 +1,6 @@
 package com.abc.facultyload.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -19,6 +20,7 @@ public class User extends BaseEntity {
     @Column(name = "roll_number", unique = true, length = 50)
     private String rollNumber;
 
+    @JsonIgnore
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 

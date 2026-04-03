@@ -41,8 +41,5 @@ public class AuthService {
                 .email(user.getEmail())
                 .build();
     }
-
-    public java.util.List<User> getAllUsersDebug() {
-        return userRepository.findAll();
-    }
 }
+
