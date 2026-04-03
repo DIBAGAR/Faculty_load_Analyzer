@@ -50,22 +50,32 @@ public class DataInitializer implements ApplicationRunner {
         });
 
         // Initialize Super Admin
-        if (!userRepository.existsByEmail(superAdminEmail)) {
-            Role superAdminRole = roleRepository.findByName(Role.RoleName.SUPER_ADMIN)
-                    .orElseThrow(() -> new RuntimeException("Super Admin role not found"));
+        userRepository.findByEmail(superAdminEmail).ifPresentOrElse(
+            admin -> {
+                admin.setPasswordHash(passwordEncoder.encode(superAdminPassword));
+                admin.setName(superAdminName);
+                admin.setRollNumber(superAdminRollNumber);
+                admin.setActive(true);
+                userRepository.save(admin);
+                log.info("Updated Super Admin account password: {}", superAdminEmail);
+            },
+            () -> {
+                Role superAdminRole = roleRepository.findByName(Role.RoleName.SUPER_ADMIN)
+                        .orElseThrow(() -> new RuntimeException("Super Admin role not found"));
 
-            User superAdmin = User.builder()
-                    .email(superAdminEmail)
-                    .rollNumber(superAdminRollNumber)
-                    .passwordHash(passwordEncoder.encode(superAdminPassword))
-                    .role(superAdminRole)
-                    .name(superAdminName)
-                    .active(true)
-                    .build();
+                User superAdmin = User.builder()
+                        .email(superAdminEmail)
+                        .rollNumber(superAdminRollNumber)
+                        .passwordHash(passwordEncoder.encode(superAdminPassword))
+                        .role(superAdminRole)
+                        .name(superAdminName)
+                        .active(true)
+                        .build();
 
-            userRepository.save(superAdmin);
-            log.info("Created Super Admin account: {}", superAdminEmail);
-        }
+                userRepository.save(superAdmin);
+                log.info("Created Super Admin account: {}", superAdminEmail);
+            }
+        );
 
         // Cleanup old restrictive constraints for course_code to allow multiple departments
         try {
